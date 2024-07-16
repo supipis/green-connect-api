@@ -1,0 +1,42 @@
+### Create a new listing
+POST http://localhost:8080/api/listings
+Content-Type: application/json
+
+{
+  "image": "src/assets/tomato.png",
+  "name": "Tomato",
+  "category": "Plant",
+  "location": "Solna",
+  "quantity": 2
+}
+
+###
+
+### Get all listings
+GET http://localhost:8080/api/listings
+
+###
+
+### Get a listing by ID
+GET http://localhost:8080/api/listings/1
+
+###
+
+### Update a listing by ID
+PUT http://localhost:8080/api/listings/1
+Content-Type: application/json
+
+{
+  "image": "src/assets/tomato.png",
+  "name": "Tomato",
+  "category": "Plant",
+  "location": "Solna",
+  "quantity": 3
+}
+
+###
+
+### Delete a listing by ID
+DELETE http://localhost:8080/api/listings/1
+
+###
