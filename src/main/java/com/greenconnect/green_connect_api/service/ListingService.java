@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ListingService {
@@ -18,11 +19,12 @@ public class ListingService {
     }
 
     public List<Listing> getAllListings() {
-        return listingRepository.findAll();
+        return (List<Listing>) listingRepository.findAll();
     }
 
     public Listing getListingById(Long id) {
-        return listingRepository.findById(id).orElse(null);
+        Optional<Listing> listing = listingRepository.findById(id);
+        return listing.orElse(null);
     }
 
     public void deleteListing(Long id) {
