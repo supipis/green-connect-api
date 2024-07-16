@@ -30,4 +30,17 @@ public class ListingService {
     public void deleteListing(Long id) {
         listingRepository.deleteById(id);
     }
+
+    public Listing updateListing(Long id, Listing updatedListing) {
+        return listingRepository.findById(id)
+                .map(existingListing -> {
+                    existingListing.setImage(updatedListing.getImage());
+                    existingListing.setName(updatedListing.getName());
+                    existingListing.setCategory(updatedListing.getCategory());
+                    existingListing.setLocation(updatedListing.getLocation());
+                    existingListing.setQuantity(updatedListing.getQuantity());
+                    return listingRepository.save(existingListing);
+                })
+                .orElseThrow(() -> new ResourceNotFoundException("Listing not found with id " + id));
+    }
 }
