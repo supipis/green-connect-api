@@ -1,4 +1,4 @@
-package com.greenconnect.green_connect_api.listings;
+package com.greenconnect.green_connect_api.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
