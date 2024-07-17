@@ -6,11 +6,13 @@ import com.greenconnect.green_connect_api.service.ListingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Optional;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/listings")
 public class ListingController {
 
@@ -18,8 +20,13 @@ public class ListingController {
     private ListingService listingService;
 
     @PostMapping
-    public Listing addListing(@RequestBody Listing listing) {
-        return listingService.saveListing(listing);
+    public Listing addListing(@RequestParam("image") MultipartFile image,
+                              @RequestParam("name") String name,
+                              @RequestParam("category") String category,
+                              @RequestParam("location") String location,
+                              @RequestParam("quantity") int quantity) {
+        // Call service method to handle file upload and create listing
+        return listingService.saveListing(image, name, category, location, quantity);
     }
 
     @GetMapping
